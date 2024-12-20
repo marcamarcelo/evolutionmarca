@@ -1,5 +1,5 @@
 {
-  "name": "evolução-marca",
+  "name": "evolucao-marca",
   "version": "1.0.0",
   "description": "Projeto Evolution Marca",
   "main": "index.js",
@@ -10,4 +10,5 @@
     "express": "^4.18.2"
   }
 }
+
 
