@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 
 // Chave da API configurada
-const API_KEY = 'my-secret-api-key-22210507'; // Sua chave
+const API_KEY = 'my-secret-api-key-22210507';
 
 // Middleware para validar a chave API
 app.use((req, res, next) => {
@@ -13,7 +13,7 @@ app.use((req, res, next) => {
     next();
 });
 
-// Rota principal (testar a conexão)
+// Rota principal
 app.get('/', (req, res) => {
     res.send('Olá, Evolution Marca!');
 });
