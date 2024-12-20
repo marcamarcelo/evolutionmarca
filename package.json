@@ -2,9 +2,9 @@
   "name": "evolução-marca",
   "version": "1.0.0",
   "description": "Projeto Evolution Marca",
-  "main": "índice.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node índice.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "express": "^4.18.2"
