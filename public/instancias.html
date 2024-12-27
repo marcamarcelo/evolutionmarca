@@ -7,89 +7,77 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
             display: flex;
-            justify-content: center;
-            align-items: center;
             flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
-        .instancia {
-            background: #fff;
-            padding: 20px;
-            margin: 10px;
+        .container {
+            max-width: 800px;
+            margin-top: 20px;
+        }
+        .instance {
             border: 1px solid #ddd;
             border-radius: 8px;
-            width: 80%;
-            max-width: 500px;
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        .botao {
-            padding: 10px 15px;
-            margin: 5px;
+        .instance h3 {
+            margin: 0;
+        }
+        .buttons {
+            margin-top: 10px;
+        }
+        .buttons button {
+            margin-right: 10px;
+            padding: 10px 20px;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            color: #fff;
         }
-        .botao-reiniciar {
+        .buttons .view {
+            background-color: #007bff;
+            color: white;
+        }
+        .buttons .reconnect {
             background-color: #28a745;
+            color: white;
         }
-        .botao-desconectar {
+        .buttons .disconnect {
             background-color: #dc3545;
+            color: white;
         }
     </style>
 </head>
 <body>
     <h1>Gerenciamento de Instâncias</h1>
-
-    <div id="instancias">
-        <!-- Instâncias serão carregadas dinamicamente -->
+    <div class="container">
+        <!-- Lista de instâncias -->
+        <div class="instance">
+            <h3>Instância: marcacim</h3>
+            <p>Número de contatos: 1308</p>
+            <p>Mensagens: 1929</p>
+            <div class="buttons">
+                <button class="view" onclick="window.location.href='/dashboard/marcacim'">Ver Detalhes</button>
+                <button class="reconnect">Reiniciar</button>
+                <button class="disconnect">Desconectar</button>
+            </div>
+        </div>
+        <div class="instance">
+            <h3>Instância: marcacim2</h3>
+            <p>Número de contatos: 1105</p>
+            <p>Mensagens: 1745</p>
+            <div class="buttons">
+                <button class="view" onclick="window.location.href='/dashboard/marcacim2'">Ver Detalhes</button>
+                <button class="reconnect">Reiniciar</button>
+                <button class="disconnect">Desconectar</button>
+            </div>
+        </div>
     </div>
-
-    <script>
-        const instancias = [
-            { nome: "marcacim", contatos: 1308, mensagens: 1929 },
-            { nome: "marcacim2", contatos: 1105, mensagens: 1745 }
-        ];
-
-        const container = document.getElementById('instancias');
-
-        instancias.forEach(instancia => {
-            const div = document.createElement('div');
-            div.className = 'instancia';
-            div.innerHTML = `
-                <h3>Instância: ${instancia.nome}</h3>
-                <p>Número de contatos: ${instancia.contatos}</p>
-                <p>Mensagens: ${instancia.mensagens}</p>
-                <button class="botao botao-reiniciar" onclick="reiniciar('${instancia.nome}')">Reiniciar</button>
-                <button class="botao botao-desconectar" onclick="desconectar('${instancia.nome}')">Desconectar</button>
-            `;
-            container.appendChild(div);
-        });
-
-        function reiniciar(instancia) {
-            fetch('/reiniciar', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ instancia })
-            })
-            .then(response => response.text())
-            .then(data => alert(data))
-            .catch(error => console.error('Erro ao reiniciar:', error));
-        }
-
-        function desconectar(instancia) {
-            fetch('/desconectar', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ instancia })
-            })
-            .then(response => response.text())
-            .then(data => alert(data))
-            .catch(error => console.error('Erro ao desconectar:', error));
-        }
-    </script>
 </body>
 </html>
