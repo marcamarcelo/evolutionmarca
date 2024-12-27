@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerente de Evolução - Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #4CAF50;
+            color: white;
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 20px;
+        }
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px 0;
+            width: 100%;
+            text-align: center;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .sidebar a:hover {
+            background-color: #45a049;
+        }
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .card h2 {
+            margin-top: 0;
+        }
+        .card button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .card button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Gerente de Evolução</h2>
+        <a href="/instancias">Visão Geral</a>
+        <a href="#">Configurações</a>
+        <a href="#">Eventos</a>
+        <a href="#">Integrações</a>
+    </div>
+    <div class="content">
+        <div class="card">
+            <h2>Instância: marcacim</h2>
+            <p>Número de contatos: 1308</p>
+            <p>Mensagens: 1929</p>
+            <button>Reiniciar</button>
+            <button style="background-color: red;">Desconectar</button>
+        </div>
+        <div class="card">
+            <h2>Instância: marcacim2</h2>
+            <p>Número de contatos: 1105</p>
+            <p>Mensagens: 1745</p>
+            <button>Reiniciar</button>
+            <button style="background-color: red;">Desconectar</button>
+        </div>
+    </div>
+</body>
+</html>
