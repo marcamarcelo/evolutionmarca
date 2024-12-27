@@ -1,35 +1,24 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const path = require('path');
 
 const app = express();
 
-// Middleware para processar JSON do formulário
-app.use(bodyParser.json());
-
-// Configurar para servir arquivos estáticos da pasta "public"
+// Configurar para servir arquivos estáticos (HTML, CSS, JS, etc.)
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Rota para a página principal (conexão)
+// Rota principal
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Rota para a página de gerenciamento de instâncias
+// Rota para instâncias
 app.get('/instancias', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'instancias.html'));
 });
 
-// Rota para processar conexões (apenas exemplo)
-app.post('/connect', (req, res) => {
-    const { serverUrl, phoneNumber } = req.body;
-
-    if (!serverUrl || !phoneNumber) {
-        return res.status(400).json({ message: 'Preencha todos os campos.' });
-    }
-
-    // Simulação de lógica de conexão
-    res.json({ message: `Conectado ao servidor ${serverUrl} com o número ${phoneNumber}` });
+// Rota para dashboard
+app.get('/dashboard', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
 });
 
 // Porta do servidor
