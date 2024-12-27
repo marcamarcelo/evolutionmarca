@@ -1,14 +1,25 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const path = require('path');
 
 const app = express();
 
-// Configurar para servir arquivos estáticos (HTML, CSS, JS, etc.)
+// Middleware para processar JSON do formulário
+app.use(bodyParser.json());
+
+// Configurar para servir arquivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Rota principal (será exibida ao acessar a aplicação)
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+// Rota para processar a conexão
+app.post('/connect', (req, res) => {
+    const { serverUrl, phoneNumber } = req.body;
+
+    if (!serverUrl || !phoneNumber) {
+        return res.status(400).json({ message: 'Preencha todos os campos.' });
+    }
+
+    // Simulação de lógica de conexão (substitua com sua lógica real)
+    res.json({ message: `Conectado ao servidor ${serverUrl} com o número ${phoneNumber}` });
 });
 
 // Porta do servidor
